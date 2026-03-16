@@ -1,0 +1,16 @@
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+const TasksRouter = require('./routes/Tasks');
+
+app.use(express.json());
+app.use('/tasks', TasksRouter);
+
+app.get('/', (req, res) => {
+  res.send('Hello from Express!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

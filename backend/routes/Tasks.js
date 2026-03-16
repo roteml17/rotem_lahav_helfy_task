@@ -37,33 +37,49 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    const { title, description, priority } = req.body;
+    const { title, description, priority, completed } = req.body;
     const id = req.params.id;
-
-    if (title.trim() === '')
-        return res.status(400).json({ message: 'title is required and must be a non-empty string' });
-    if (description.trim() === '')
-        return res.status(400).json({ message: 'description is required and must be a non-empty string' });
-    
+  
+    if (title.trim() === '') {
+      return res
+        .status(400)
+        .json({ message: 'title is required and must be a non-empty string' });
+    }
+  
+    if (description.trim() === '') {
+      return res
+        .status(400)
+        .json({ message: 'description is required and must be a non-empty string' });
+    }
+  
     const allowedPriorities = ['low', 'medium', 'high'];
-    if (!allowedPriorities.includes(priority))
-        return res.status(400).json({ message: 'priority is required and must be one of: low, medium, high' });
-
-    const response = updateTask(id, { title, description, priority });
-    if (!response)
-        return res.status(404).json({ message: 'task was not found' });
-    else
-        return res.status(200).json({ message: 'task was updated found' });
-}); 
+    if (!allowedPriorities.includes(priority)) {
+      return res.status(400).json({
+        message: 'priority is required and must be one of: low, medium, high',
+      });
+    }
+  
+    if (completed !== undefined && typeof completed !== 'boolean') {
+      return res
+        .status(400)
+        .json({ message: 'completed must be a boolean value' });
+    }
+  
+    const updatedTask = updateTask(id, { title, description, priority, completed });
+    if (!updatedTask) {
+      return res.status(404).json({ message: 'task was not found' });
+    }
+    return res.status(200).json(updatedTask);
+  });
 
 router.patch('/:id/toggle', (req, res) => {
     const id = req.params.id;
-   
-    const response = ToggleTaskCompletionStatus(id, data);
-    if (!response)
-        return res.status(404).json({ message: 'task was not found' });
-    else
-        return res.status(200).json({ message: 'task was updated found' });
+    
+    const updatedTask = ToggleTaskCompletionStatus(id);
+    if (!updatedTask) {
+        return res.status(404).json({ message: "task was not found" });
+    }
+    return res.status(200).json(updatedTask);
 });
 
 module.exports = router;

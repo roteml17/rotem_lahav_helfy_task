@@ -1,6 +1,31 @@
 
 //in memory data
-let tasks = [];
+let tasks = [
+    {
+      id: 1,
+      title: "Finish React carousel",
+      description: "Implement infinite scrolling and connect to backend",
+      completed: false,
+      createdAt: new Date(),
+      priority: "high",
+    },
+    {
+      id: 2,
+      title: "Write backend tests",
+      description: "Cover all task endpoints with tests",
+      completed: false,
+      createdAt: new Date(),
+      priority: "medium",
+    },
+    {
+      id: 3,
+      title: "Polish UI",
+      description: "Improve spacing and colors of the carousel",
+      completed: false,
+      createdAt: new Date(),
+      priority: "low",
+    },
+  ];
 
 function getAllTasks() {
     return tasks;
@@ -34,43 +59,26 @@ function deleteTask(taskId) {
 function updateTask(taskId, data) {
     const numericId = Number(taskId);
     const index  = tasks.findIndex(t => t.id === numericId);
-    if (index === -1)
-        return false;
-    else {
-    const task = tasks[index];
+    if (index === -1) return null;
+  const task = tasks[index];
 
-    if (data.title !== undefined) {
-      task.title = data.title;
-    }
-    if (data.description !== undefined) {
-      task.description = data.description;
-    }
-    if (data.completed !== undefined) {
-      task.completed = data.completed;
-    }
-    if (data.priority !== undefined) {
-      task.priority = data.priority;
-    }
-  
-    return true;
-  }
+  if (data.title !== undefined) task.title = data.title;
+  if (data.description !== undefined) task.description = data.description;
+  if (data.completed !== undefined) task.completed = data.completed;
+  if (data.priority !== undefined) task.priority = data.priority;
+
+  return task;
 }
 
 function ToggleTaskCompletionStatus(taskId) {
-    const numericId = Number(taskId);
-    const index  = tasks.findIndex(t => t.id === numericId);
-    if (index === -1)
-        return false;
-    else
-    {
-        const task = tasks[index];
-        if (task.completed === false)
-            task.completed = true;
-        else
-            task.completed = false;
+  const numericId = Number(taskId);
+  const index = tasks.findIndex(t => t.id === numericId);
+  if (index === -1) return null;
 
-            return true;
-    }
+  const task = tasks[index];
+  task.completed = !task.completed;
+
+  return task;
 }
 
 module.exports = {

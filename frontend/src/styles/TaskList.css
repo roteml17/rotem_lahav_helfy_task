@@ -1,0 +1,89 @@
+/* חלון הקרוסלה */
+.task-carousel-window {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+
+/* המסלול שנע אופקית */
+.task-carousel-track {
+  display: flex;
+  align-items: stretch;
+  will-change: transform;
+}
+
+/* כרטיס יחיד של Task */
+.task-card {
+  min-width: 280px;
+  flex-shrink: 0;
+  margin-right: 16px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--surface, #1f2933);
+  border: 1px solid var(--border, #2d3748);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* כותרת המשימה */
+.task-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* תיאור המשימה */
+.task-desc {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+/* שורה תחתונה: priority + status */
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* תגית priority */
+.task-priority {
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+/* צבעים שונים לכל priority */
+.task-priority-low {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.task-priority-medium {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.task-priority-high {
+  background: rgba(248, 113, 113, 0.15);
+  color: #f97373;
+}
+
+/* סטטוס Completed/Pending */
+.task-status {
+  opacity: 0.8;
+}
+
+/* אזור הכפתורים – כאן הרווח שביקשת */
+.task-actions {
+  display: flex;
+  gap: 8px;        /* רווח בין כל כפתור/סלקט */
+  margin-top: 10px;
+}
+
+.task-actions button,
+.task-actions select {
+  font-size: 12px;
+  padding: 4px 8px;
+}

@@ -1,11 +1,15 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-const TasksRouter = require('./routes/Tasks');
+const tasksRouter = require('./routes/Tasks');
 
+app.use(cors());
 app.use(express.json());
-app.use('/tasks', TasksRouter);
+
+app.use('/tasks', tasksRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello from Express!');

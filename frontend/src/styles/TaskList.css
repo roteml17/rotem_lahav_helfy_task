@@ -1,4 +1,3 @@
-/* חלון הקרוסלה */
 .task-carousel-window {
   width: 100%;
   max-width: 900px;
@@ -6,14 +5,12 @@
   overflow: hidden;
 }
 
-/* המסלול שנע אופקית */
 .task-carousel-track {
   display: flex;
   align-items: stretch;
   will-change: transform;
 }
 
-/* כרטיס יחיד של Task */
 .task-card {
   min-width: 280px;
   flex-shrink: 0;
@@ -25,21 +22,21 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* כותרת המשימה */
+
 .task-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-/* תיאור המשימה */
+
 .task-desc {
   font-size: 14px;
   opacity: 0.85;
   margin-bottom: 12px;
 }
 
-/* שורה תחתונה: priority + status */
+
 .task-meta {
   display: flex;
   justify-content: space-between;
@@ -47,14 +44,14 @@
   font-size: 12px;
 }
 
-/* תגית priority */
+
 .task-priority {
   padding: 4px 10px;
   border-radius: 999px;
   text-transform: capitalize;
 }
 
-/* צבעים שונים לכל priority */
+
 .task-priority-low {
   background: rgba(16, 185, 129, 0.15);
   color: #34d399;
@@ -70,15 +67,14 @@
   color: #f97373;
 }
 
-/* סטטוס Completed/Pending */
 .task-status {
   opacity: 0.8;
 }
 
-/* אזור הכפתורים – כאן הרווח שביקשת */
+
 .task-actions {
   display: flex;
-  gap: 8px;        /* רווח בין כל כפתור/סלקט */
+  gap: 8px;
   margin-top: 10px;
 }
 
